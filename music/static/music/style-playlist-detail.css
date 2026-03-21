@@ -1,0 +1,131 @@
+/* Detalhe de Playlist */
+.playlist-detail {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.playlist-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.playlist-detail-header h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+}
+
+.playlist-detail-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.playlist-detail-actions a {
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.edit-btn {
+    background-color: #f39c12;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #d68910;
+    transform: translateY(-2px);
+}
+
+.back-btn {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.back-btn:hover {
+    background-color: #7f8c8d;
+    transform: translateY(-2px);
+}
+
+.musicas-list h3 {
+    font-size: 1.3rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+}
+
+.musica-item {
+    background-color: #f9f9f9;
+    border-left: 4px solid #9b59b6;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.musica-item:hover {
+    background-color: #f0eef9;
+    transform: translateX(4px);
+}
+
+.musica-item strong {
+    display: block;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 0.3rem;
+}
+
+.musica-item span {
+    display: block;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 0.2rem;
+}
+
+.musica-duracao {
+    color: #e74c3c !important;
+    font-weight: 500;
+}
+
+.empty-playlist {
+    text-align: center;
+    color: #95a5a6;
+    padding: 2rem;
+    font-style: italic;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .playlist-detail-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .playlist-detail-actions {
+        width: 100%;
+    }
+
+    .playlist-detail-actions a {
+        flex: 1;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .playlist-detail {
+        margin: 1rem 0.5rem;
+        padding: 1rem;
+    }
+
+    .playlist-detail-header h2 {
+        font-size: 1.4rem;
+    }
+}

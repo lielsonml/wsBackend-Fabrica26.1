@@ -1,49 +1,65 @@
 {% extends 'music/base.html' %}
 
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'music/style-lastfm.css' %}">
+{% endblock %}
+
 {% block content %}
 <h2>🔍 Buscar no Last.fm</h2>
 
-<form method="get">
-    <input type="text" name="q" value="{{ query }}" placeholder="Buscar artista ou música...">
-    <button type="submit">Buscar</button>
-</form>
-
-{% if artistas %}
-<h3>🎤 Artistas encontrados</h3>
-{% for artista in artistas %}
-<div>
-    <strong>{{ artista.name }}</strong>
-    <form method="post" action="{% url 'lastfm_salvar' %}">
-        {% csrf_token %}
-        <input type="hidden" name="tipo" value="artista">
-        <input type="hidden" name="lastfm_id" value="{{ artista.mbid }}">
-        <input type="hidden" name="nome" value="{{ artista.name }}">
-        <input type="hidden" name="genero" value="">
-        <input type="hidden" name="duracao" value="{musica.duracao}"
-        <button type="submit">💾 Salvar</button>
+<div class="search-form">
+    <form method="get">
+        <input type="text" name="q" value="{{ query }}" placeholder="Buscar artista ou música...">
+        <button type="submit">Buscar</button>
     </form>
 </div>
-{% endfor %}
+
+{% if artistas %}
+<div class="search-section">
+    <h3>🎤 Artistas encontrados</h3>
+    <div class="search-results">
+        {% for artista in artistas %}
+        <div class="result-card">
+            <h3>{{ artista.name }}</h3>
+            <form method="post" action="{% url 'lastfm_salvar' %}">
+                {% csrf_token %}
+                <input type="hidden" name="tipo" value="artista">
+                <input type="hidden" name="lastfm_id" value="{{ artista.mbid }}">
+                <input type="hidden" name="nome" value="{{ artista.name }}">
+                <input type="hidden" name="genero" value="">
+                <button type="submit">💾 Salvar</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endif %}
 
 {% if musicas %}
-<h3>🎵 Músicas encontradas</h3>
-{% for musica in musicas %}
-<div>
-    <strong>{{ musica.name }}</strong> — {{ musica.artist }}
-    <form method="post" action="{% url 'lastfm_salvar' %}">
-        {% csrf_token %}
-        <input type="hidden" name="tipo" value="musica">
-        <input type="hidden" name="lastfm_id" value="{{ musica.mbid }}">
-        <input type="hidden" name="nome" value="{{ musica.name }}">
-        <input type="hidden" name="artista_lastfm_id" value="">
-        <input type="hidden" name="artista_nome" value="{{ musica.artist }}">
-        <input type="hidden" name="duracao_ms" value="{{ musica.duration }}">
-        <input type="hidden" name="preview_url" value="{{ musica.url }}">
-        <button type="submit">💾 Salvar</button>
-    </form>
+<div class="search-section">
+    <h3>🎵 Músicas encontradas</h3>
+    <div class="search-results">
+        {% for musica in musicas %}
+        <div class="result-card">
+            <h3>{{ musica.name }}</h3>
+            <p>{{ musica.artist }}</p>
+            <form method="post" action="{% url 'lastfm_salvar' %}">
+                {% csrf_token %}
+                <input type="hidden" name="tipo" value="musica">
+                <input type="hidden" name="lastfm_id" value="{{ musica.mbid }}">
+                <input type="hidden" name="nome" value="{{ musica.name }}">
+                <input type="hidden" name="artista_lastfm_id" value="">
+                <input type="hidden" name="artista_nome" value="{{ musica.artist }}">
+                <input type="hidden" name="duracao_ms" value="{{ musica.duration }}">
+                <input type="hidden" name="preview_url" value="{{ musica.url }}">
+                <button type="submit">💾 Salvar</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
 </div>
-{% endfor %}
 {% endif %}
 
 {% endblock %}
