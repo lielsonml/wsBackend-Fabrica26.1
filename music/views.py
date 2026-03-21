@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Artista, Musicafavorita
-from .forms import ArtistaForm, MusicafavoritaForm
+from .models import Artista, Musicafavorita, Playlist
+from .forms import ArtistaForm, MusicafavoritaForm, PlaylistForm
 from .lastfm_services import buscar_artista, buscar_musicas
 
 def home(request):
     artistas = Artista.objects.all()
     musicas = Musicafavorita.objects.select_related('artista').all()
-    return render(request, 'music/home.html', {'artistas': artistas,'musicas': musicas,})
+    playlists = Playlist.objects.prefetch_related('musicas').all()
+    return render(request, 'music/home.html', {'artistas': artistas,'musicas': musicas, 'playlists': playlists})
 
 def artista_criar(request):
     if request.method == 'POST':
@@ -85,7 +86,7 @@ def lastfm_salvar(request):
         tipo = request.POST.get('tipo')
         if tipo == 'artista':
             Artista.objects.get_or_create(
-                spotify_id=request.POST.get('lastfm_id'),
+                lastfm_id=request.POST.get('lastfm_id'),
                 defaults={
                     'nome': request.POST.get('nome'),
                     'genero': request.POST.get('genero', ''),
@@ -94,11 +95,11 @@ def lastfm_salvar(request):
             return redirect('home')
         elif tipo == 'musica':
             artista, _ = Artista.objects.get_or_create(
-                spotify_id=request.POST.get('artista_lastfm_id'),
+                lastfm_id=request.POST.get('artista_lastfm_id'),
                 defaults={'nome': request.POST.get('artista_nome')}
             )
             Musicafavorita.objects.get_or_create(
-                spotify_id=request.POST.get('lastfm_id'),
+                lastfm_id=request.POST.get('lastfm_id'),
                 defaults={
                     'titulo': request.POST.get('nome'),
                     'artista': artista,
@@ -109,3 +110,39 @@ def lastfm_salvar(request):
             return redirect('home')
     else:
         return redirect('lastfm_buscar')
+    
+def playlist_listar(request):
+    playlists = Playlist.objects.all()
+    return render(request, 'music/playlist_listar.html', {'playlists': playlists})
+
+def playlist_criar(request):
+    if request.method == 'POST':
+        form = PlaylistForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('playlist_listar')
+    else:
+        form = PlaylistForm()
+    return render(request, 'music/playlist_form.html', {'form': form, 'titulo': 'Nova Playlist'})
+
+def playlist_editar(request, pk):
+    playlist = get_object_or_404(Playlist, pk=pk)
+    if request.method == 'POST':
+        form = PlaylistForm(request.POST, instance=playlist)
+        if form.is_valid():
+            form.save()
+            return redirect('playlist_listar')
+    else:
+        form = PlaylistForm(instance=playlist)
+    return render(request, 'music/playlist_form.html', {'form': form, 'titulo': 'Editar Playlist'})
+
+def playlist_deletar(request, pk):
+    playlist = get_object_or_404(Playlist, pk=pk)
+    if request.method == 'POST':
+        playlist.delete()
+        return redirect('playlist_listar')
+    return render(request, 'music/playlist_deletar.html', {'playlist': playlist})
+
+def playlist_detalhe(request, pk):
+    playlist = get_object_or_404(Playlist, pk=pk)
+    return render(request, 'music/playlist_detalhe.html', {'playlist': playlist})

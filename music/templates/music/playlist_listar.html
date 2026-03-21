@@ -1,0 +1,18 @@
+{% extends 'music/base.html' %}
+
+{% block content %}
+<h2>🎵 Playlists</h2>
+<a href="{% url 'playlist_criar' %}">+ Nova Playlist</a>
+
+{% for playlist in playlists %}
+<div>
+    <strong>{{ playlist.nome }}</strong>
+    <span>{{ playlist.musicas.count }} músicas</span>
+    <a href="{% url 'playlist_detalhe' playlist.pk %}">Ver</a>
+    <a href="{% url 'playlist_editar' playlist.pk %}">Editar</a>
+    <a href="{% url 'playlist_deletar' playlist.pk %}">Excluir</a>
+</div>
+{% empty %}
+<p>Nenhuma playlist criada ainda.</p>
+{% endfor %}
+{% endblock %}

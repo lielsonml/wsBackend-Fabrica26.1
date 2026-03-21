@@ -13,4 +13,10 @@ urlpatterns = [
 
      path('lastfm/', views.lastfm_buscar, name='lastfm_buscar'),
     path('lastfm/salvar/', views.lastfm_salvar, name='lastfm_salvar'),
+
+    path('playlists/', views.playlist_listar, name='playlist_listar'),
+    path('playlists/nova/', views.playlist_criar, name='playlist_criar'),
+    path('playlists/<int:pk>/', views.playlist_detalhe, name='playlist_detalhe'),
+    path('playlists/<int:pk>/editar/', views.playlist_editar, name='playlist_editar'),
+    path('playlists/<int:pk>/deletar/', views.playlist_deletar, name='playlist_deletar'),
 ]

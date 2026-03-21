@@ -2,7 +2,7 @@ from django.db import models
 
 class Artista(models.Model):
     nome = models.CharField(max_length=200)
-    spotify_id = models.CharField(max_length=200,unique=True,blank=True,null=True)
+    lastfm_id = models.CharField(max_length=200,unique=True,blank=True,null=True)
     genero = models.CharField(max_length=80,blank=True)
     criado_em = models.DateTimeField(auto_now_add=True)
 
@@ -11,7 +11,7 @@ class Artista(models.Model):
 
 class Musicafavorita(models.Model):
     titulo = models.CharField(max_length=200)
-    spotify_id = models.CharField(max_length=200,unique=True,blank=True,null=True)
+    lastfm_id = models.CharField(max_length=200,unique=True,blank=True,null=True)
     artista = models.ForeignKey(Artista, on_delete=models.CASCADE,related_name='musicas')
     criado_em = models.DateTimeField(auto_now_add=True)
     duracao_ms = models.IntegerField(default=0,blank=True,null=True)
@@ -29,7 +29,6 @@ class Musicafavorita(models.Model):
 
 class Playlist (models.Model):
     nome = models.CharField(max_length=200)
-    descricao = models.TextField(blank=True)
     musicas = models.ManyToManyField(Musicafavorita, related_name='playlists',blank=True)
     criado_em = models.DateTimeField(auto_now_add=True)
     

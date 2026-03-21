@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador Spotify</title>
+    <title>Gerenciador Musicas</title>
   
 </head>
 <body>
 <nav>
     <a href="{% url 'home' %}">Início</a>
+    <a href ="{% url 'playlist_listar' %}">Playlists</a>
     <a href="{% url 'lastfm_buscar' %}">🔍 Buscar no Last.fm</a>
 </nav>
 <div class="container">

@@ -43,6 +43,27 @@
         <p class="vazio">Nenhuma música cadastrada.</p>
         {% endfor %}
     </div>
+        <div class="coluna">
+        <div class="coluna-header">
+            <h2>📋 Playlists</h2>
+            <a href="{% url 'playlist_criar' %}">+ Nova</a>
+        </div>
+        {% for playlist in playlists %}
+        <div class="card">
+            <div class="card-info">
+                <strong>{{ playlist.nome }}</strong>
+                <span>🎵 {{ playlist.musicas.count }} músicas</span>
+            </div>
+            <div class="card-acoes">
+                <a href="{% url 'playlist_detalhe' playlist.pk %}">Ver</a>
+                <a href="{% url 'playlist_editar' playlist.pk %}">Editar</a>
+                <a href="{% url 'playlist_deletar' playlist.pk %}">Excluir</a>
+            </div>
+        </div>
+        {% empty %}
+        <p>Nenhuma playlist criada.</p>
+        {% endfor %}
+    </div>
 
 </div>
 {% endblock %}

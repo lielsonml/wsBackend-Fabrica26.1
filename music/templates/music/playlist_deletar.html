@@ -1,0 +1,11 @@
+{% extends 'music/base.html' %}
+
+{% block content %}
+<h2>Confirmar exclusão</h2>
+<p>Deseja excluir a playlist <strong>{{ playlist.nome }}</strong>?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sim, excluir</button>
+    <a href="{% url 'playlist_listar' %}">Cancelar</a>
+</form>
+{% endblock %}

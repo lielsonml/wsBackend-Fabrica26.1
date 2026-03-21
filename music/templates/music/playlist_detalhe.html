@@ -1,0 +1,17 @@
+{% extends 'music/base.html' %}
+
+{% block content %}
+<h2>🎵 {{ playlist.nome }}</h2>
+<h3>Músicas:</h3>
+{% for musica in playlist.musicas.all %}
+<div>
+    <strong>{{ musica.titulo }}</strong>
+    <span>{{ musica.artista.nome }}</span>
+    <span>⏱ {{ musica.duracao_formatada }}</span>
+</div>
+{% empty %}
+<p>Nenhuma música nesta playlist.</p>
+{% endfor %}
+<a href="{% url 'playlist_editar' playlist.pk %}">Editar</a>
+<a href="{% url 'playlist_listar' %}">Voltar</a>
+{% endblock %}
