@@ -29,4 +29,22 @@ def buscar_musicas(nome):
     }
     resposta = requests.get(URL_BASE, params=parametros)
     resultados = resposta.json()
+    musicas = resultados.get('results', {}).get('trackmatches', {}).get('track', [])
+    
+    for musica in musicas:
+        try:
+            params_info = {
+                'method': 'track.getInfo',
+                'artist': musica.get('artist'),
+                'track': musica.get('name'),
+                'api_key': API_KEY,
+                'format': 'json',
+            }
+            info_resposta = requests.get(URL_BASE, params=params_info)
+            info = info_resposta.json().get('track', {})
+            musica['duration'] = info.get('duration', 0) 
+        except:
+            musica['duration'] = 0
+    
+    return musicas
     return resultados.get('results', {}).get('trackmatches', {}).get('track', [])
