@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'music/base.html' %}
+{% block content %}
     <h2>Artistas</h2>
 <a href="{% url 'criar_artista' %}" class="btn btn-green">+ Novo</a>
 <table>
@@ -21,5 +15,4 @@
   </tr>
   {% endfor %}
 </table>
-</body>
-</html>
+{% endblock %}

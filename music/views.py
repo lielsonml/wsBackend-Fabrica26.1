@@ -34,6 +34,41 @@ def deletar_artista(request, pk):
         return redirect('lista_artistas')
     return render(request, 'music/deletar_artista.html', {'artista': artista})
 
+def lista_musicas(request):
+    musicas = Musicafavorita.objects.all()
+    return render(request, 'music/lista_musicas.html', {'musicas': musicas})
+
+def criar_musica(request):
+    if request.method == 'POST':
+        form = MusicafavoritaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_musicas')
+    else:
+        form = MusicafavoritaForm()
+    return render(request, 'music/form_musica.html', {'form': form, 'titulo': 'Criar Música'},)
+
+def editar_musica(request, pk):
+    musica = get_object_or_404(Musicafavorita, pk=pk)
+    if request.method == 'POST':
+        form = MusicafavoritaForm(request.POST, instance=musica)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_musicas')
+    else:
+        form = MusicafavoritaForm(instance=musica)
+    return render(request, 'music/form_musica.html', {'form': form, 'titulo': 'Editar Música'},)
+
+def deletar_musica(request, pk):
+    musica = get_object_or_404(Musicafavorita, pk=pk)
+    if request.method == 'POST':
+        musica.delete()
+        return redirect('lista_musicas')
+    return render(request, 'music/deletar_musica.html', {'musica': musica}) 
+
+
+
+
     
 
     
