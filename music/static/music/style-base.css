@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
+
+/* Reset e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+label, button, .btn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+/* Navegação */
+nav {
+    background-color: #0f0f0f;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 8px rgba(255, 217, 61, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid #FFD93D;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+nav a {
+    color: #FFD93D;
+    text-decoration: none;
+    margin-right: 2rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #FFA500;
+    text-shadow: 0 0 10px rgba(255, 217, 61, 0.4);
+}
+
+/* Container Principal */
+.container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    nav {
+        padding: 1rem;
+    }
+
+    nav a {
+        display: block;
+        margin-bottom: 0.5rem;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.5rem;
+    }
+}

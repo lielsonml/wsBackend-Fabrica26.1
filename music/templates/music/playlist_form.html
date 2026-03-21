@@ -1,0 +1,17 @@
+{% extends 'music/base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'music/style-form.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2>{{ titulo }}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+    <a href="{% url 'playlist_listar' %}">Cancelar</a>
+</form>
+{% endblock %}

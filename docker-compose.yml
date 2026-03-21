@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+
+  # Container do MySQL
+  db:
+    image: mysql:8.0
+    container_name: soundtrackr_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: spotify_manager
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  # Container do Django
+  web:
+    build: .
+    container_name: soundtrackr_web
+    restart: always
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      LASTFM_API_KEY: ${LASTFM_API_KEY}
+
+volumes:
+  mysql_data:

@@ -1,0 +1,32 @@
+{% extends 'music/base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'music/style-playlist-detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="playlist-detail">
+    <div class="playlist-detail-header">
+        <h2>{{ playlist.nome }}</h2>
+        <div class="playlist-detail-actions">
+            <a href="{% url 'playlist_editar' playlist.pk %}" class="edit-btn">Editar</a>
+            <a href="{% url 'playlist_listar' %}" class="back-btn">Voltar</a>
+        </div>
+    </div>
+    
+    <div class="musicas-list">
+        <h3>Músicas</h3>
+        {% for musica in playlist.musicas.all %}
+        <div class="musica-item">
+            <strong>{{ musica.titulo }}</strong>
+            <span>{{ musica.artista.nome }}</span>
+            <span class="musica-duracao">{{ musica.duracao_formatada }}</span>
+        </div>
+        {% empty %}
+        <p class="empty-playlist">Nenhuma música nesta playlist.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

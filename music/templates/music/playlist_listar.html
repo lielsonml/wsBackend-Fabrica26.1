@@ -1,0 +1,34 @@
+{% extends 'music/base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'music/style-playlist-list.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="playlist-container">
+    <div class="playlist-header">
+        <h2>Playlists</h2>
+        <a href="{% url 'playlist_criar' %}">+ Nova Playlist</a>
+    </div>
+    
+    <div class="playlist-list">
+        {% for playlist in playlists %}
+        <div class="playlist-item">
+            <div class="playlist-item-info">
+                <strong>{{ playlist.nome }}</strong>
+                <span>{{ playlist.musicas.count }} músicas</span>
+            </div>
+            <div class="playlist-item-actions">
+                <a href="{% url 'playlist_detalhe' playlist.pk %}">Ver</a>
+                <a href="{% url 'playlist_editar' playlist.pk %}">Editar</a>
+                <a href="{% url 'playlist_deletar' playlist.pk %}">Excluir</a>
+            </div>
+        </div>
+        {% empty %}
+        <p class="empty-message">Nenhuma playlist criada ainda.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
