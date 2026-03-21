@@ -1,26 +1,28 @@
 /* Página de Confirmação/Exclusão */
 .confirm-message {
-    background: white;
+    background: #2a2a2a;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     max-width: 600px;
     margin: 2rem auto;
     text-align: center;
+    border: 2px solid #FFD93D;
 }
 
 .confirm-message h2 {
     margin-bottom: 1rem;
-    color: #2c3e50;
+    color: #FFD93D;
 }
 
 .confirm-message p {
     margin-bottom: 1.5rem;
-    color: #7f8c8d;
+    color: #f0f0f0;
 }
 
 .confirm-message strong {
-    color: #e74c3c;
+    color: #FFA500;
+    font-weight: 600;
 }
 
 .confirm-message form {
@@ -32,8 +34,8 @@
 }
 
 .confirm-message form button {
-    background-color: #e74c3c;
-    color: white;
+    background-color: #FFD93D;
+    color: #0f0f0f;
     padding: 1rem 2rem;
     font-size: 1rem;
     font-weight: 600;
@@ -45,14 +47,14 @@
 }
 
 .confirm-message form button:hover {
-    background-color: #c0392b;
+    background-color: #FFA500;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(255, 217, 61, 0.3);
 }
 
 .confirm-message a {
-    background-color: #95a5a6;
-    color: white;
+    background-color: #505050;
+    color: #FFD93D;
     padding: 1rem 2rem;
     margin-left: 0;
     border-radius: 4px;
@@ -66,9 +68,10 @@
 }
 
 .confirm-message a:hover {
-    background-color: #7f8c8d;
+    background-color: #FFD93D;
+    color: #0f0f0f;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(255, 217, 61, 0.3);
 }
 
 /* Responsividade */

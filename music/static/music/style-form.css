@@ -1,27 +1,29 @@
 /* Formulários */
 form {
-    background: white;
+    background: #2a2a2a;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     max-width: 600px;
     margin: 2rem auto;
+    border: 2px solid #FFD93D;
 }
 
 form h2 {
     margin-bottom: 1.5rem;
-    color: #2c3e50;
+    color: #FFD93D;
 }
 
 form p {
     margin-bottom: 1.5rem;
+    color: #f0f0f0;
 }
 
 label {
     display: block;
     margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: #2c3e50;
+    font-weight: 600;
+    color: #FFD93D;
 }
 
 input[type="text"],
@@ -32,7 +34,9 @@ textarea,
 select {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid #bdc3c7;
+    border: 1px solid #FFD93D;
+    background-color: #1a1a1a;
+    color: #f0f0f0;
     border-radius: 4px;
     font-size: 1rem;
     font-family: inherit;
@@ -46,8 +50,8 @@ input[type="number"]:focus,
 textarea:focus,
 select:focus {
     outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    border-color: #FFA500;
+    box-shadow: 0 0 0 3px rgba(255, 217, 61, 0.2);
 }
 
 textarea {
@@ -68,24 +72,26 @@ form a {
 }
 
 form button {
-    background-color: #27ae60;
-    color: white;
+    background-color: #FFD93D;
+    color: #0f0f0f;
+    font-weight: 600;
 }
 
 form button:hover {
-    background-color: #229954;
+    background-color: #FFA500;
     transform: translateY(-2px);
 }
 
 form a {
-    background-color: #95a5a6;
-    color: white;
+    background-color: #505050;
+    color: #FFD93D;
     text-decoration: none;
     display: inline-block;
 }
 
 form a:hover {
-    background-color: #7f8c8d;
+    background-color: #FFD93D;
+    color: #0f0f0f;
 }
 
 /* Responsividade */

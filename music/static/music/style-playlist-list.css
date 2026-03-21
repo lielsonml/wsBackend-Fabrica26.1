@@ -1,11 +1,12 @@
 /* Lista de Playlists */
 .playlist-container {
-    background: white;
+    background: #2a2a2a;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     max-width: 900px;
     margin: 2rem auto;
+    border: 2px solid #FFD93D;
 }
 
 .playlist-header {
@@ -14,26 +15,27 @@
     align-items: center;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid #ecf0f1;
+    border-bottom: 2px solid #FFD93D;
 }
 
 .playlist-header h2 {
     font-size: 1.8rem;
-    color: #2c3e50;
+    color: #FFD93D;
 }
 
 .playlist-header a {
-    background-color: #27ae60;
-    color: white;
+    background-color: #FFD93D;
+    color: #0f0f0f;
     padding: 0.75rem 1.5rem;
     border-radius: 4px;
     text-decoration: none;
     font-size: 0.95rem;
     transition: background-color 0.3s ease;
+    font-weight: 600;
 }
 
 .playlist-header a:hover {
-    background-color: #229954;
+    background-color: #FFA500;
 }
 
 .playlist-list {
@@ -47,15 +49,16 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem;
-    background-color: #f9f9f9;
-    border-left: 4px solid #3498db;
+    background-color: #1a1a1a;
+    border-left: 4px solid #FFD93D;
     border-radius: 4px;
     transition: all 0.3s ease;
 }
 
 .playlist-item:hover {
-    background-color: #eef7ff;
+    background-color: #252525;
     transform: translateX(4px);
+    border-left-color: #FFA500;
 }
 
 .playlist-item-info {
@@ -65,13 +68,13 @@
 .playlist-item-info strong {
     display: block;
     font-size: 1.1rem;
-    color: #2c3e50;
+    color: #FFD93D;
     margin-bottom: 0.3rem;
 }
 
 .playlist-item-info span {
     font-size: 0.9rem;
-    color: #7f8c8d;
+    color: #b0b0b0;
 }
 
 .playlist-item-actions {
@@ -89,38 +92,38 @@
 }
 
 .playlist-item-actions a:first-child {
-    background-color: #3498db;
-    color: white;
+    background-color: #FFD93D;
+    color: #0f0f0f;
 }
 
 .playlist-item-actions a:first-child:hover {
-    background-color: #2980b9;
+    background-color: #FFA500;
     transform: translateY(-2px);
 }
 
 .playlist-item-actions a:nth-child(2) {
-    background-color: #f39c12;
-    color: white;
+    background-color: #FFD93D;
+    color: #0f0f0f;
 }
 
 .playlist-item-actions a:nth-child(2):hover {
-    background-color: #d68910;
+    background-color: #FFA500;
     transform: translateY(-2px);
 }
 
 .playlist-item-actions a:nth-child(3) {
-    background-color: #e74c3c;
-    color: white;
+    background-color: #FFD93D;
+    color: #0f0f0f;
 }
 
 .playlist-item-actions a:nth-child(3):hover {
-    background-color: #c0392b;
+    background-color: #FFA500;
     transform: translateY(-2px);
 }
 
 .empty-message {
     text-align: center;
-    color: #95a5a6;
+    color: #808080;
     padding: 3rem 1rem;
     font-size: 1.1rem;
 }

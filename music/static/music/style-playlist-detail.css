@@ -1,11 +1,12 @@
 /* Detalhe de Playlist */
 .playlist-detail {
-    background: white;
+    background: #2a2a2a;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     max-width: 800px;
     margin: 2rem auto;
+    border: 2px solid #FFD93D;
 }
 
 .playlist-detail-header {
@@ -14,12 +15,12 @@
     align-items: center;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid #ecf0f1;
+    border-bottom: 2px solid #FFD93D;
 }
 
 .playlist-detail-header h2 {
     font-size: 1.8rem;
-    color: #2c3e50;
+    color: #FFD93D;
 }
 
 .playlist-detail-actions {
@@ -36,34 +37,35 @@
 }
 
 .edit-btn {
-    background-color: #f39c12;
-    color: white;
+    background-color: #FFD93D;
+    color: #0f0f0f;
 }
 
 .edit-btn:hover {
-    background-color: #d68910;
+    background-color: #FFA500;
     transform: translateY(-2px);
 }
 
 .back-btn {
-    background-color: #95a5a6;
-    color: white;
+    background-color: #505050;
+    color: #FFD93D;
 }
 
 .back-btn:hover {
-    background-color: #7f8c8d;
+    background-color: #FFD93D;
+    color: #0f0f0f;
     transform: translateY(-2px);
 }
 
 .musicas-list h3 {
     font-size: 1.3rem;
-    color: #2c3e50;
+    color: #FFD93D;
     margin-bottom: 1.5rem;
 }
 
 .musica-item {
-    background-color: #f9f9f9;
-    border-left: 4px solid #9b59b6;
+    background-color: #1a1a1a;
+    border-left: 4px solid #FFD93D;
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 4px;
@@ -71,32 +73,33 @@
 }
 
 .musica-item:hover {
-    background-color: #f0eef9;
+    background-color: #252525;
     transform: translateX(4px);
+    border-left-color: #FFA500;
 }
 
 .musica-item strong {
     display: block;
     font-size: 1.1rem;
-    color: #2c3e50;
+    color: #FFD93D;
     margin-bottom: 0.3rem;
 }
 
 .musica-item span {
     display: block;
     font-size: 0.9rem;
-    color: #7f8c8d;
+    color: #b0b0b0;
     margin-bottom: 0.2rem;
 }
 
 .musica-duracao {
-    color: #e74c3c !important;
-    font-weight: 500;
+    color: #FFA500 !important;
+    font-weight: 600;
 }
 
 .empty-playlist {
     text-align: center;
-    color: #95a5a6;
+    color: #808080;
     padding: 2rem;
     font-style: italic;
 }
