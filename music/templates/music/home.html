@@ -1,0 +1,48 @@
+{% extends 'music/base.html' %}
+{% block content %}
+<div class="home-grid">
+    <div class="coluna">
+        <div class="coluna-header">
+            <h2>🎤 Artistas</h2>
+            <a href="{% url 'artista_criar' %}" class="btn btn-green">+ Novo</a>
+        </div>
+        {% for artista in artistas %}
+        <div class="card">
+            <div class="card-info">
+                <strong>{{ artista.nome }}</strong>
+                <span>{{ artista.genero }}</span>
+            </div>
+            <div class="card-acoes">
+                <a href="{% url 'artista_editar' artista.pk %}" class="btn btn-blue">Editar</a>
+                <a href="{% url 'artista_deletar' artista.pk %}" class="btn btn-red">Excluir</a>
+            </div>
+        </div>
+        {% empty %}
+        <p class="vazio">Nenhum artista cadastrado.</p>
+        {% endfor %}
+    </div>
+
+    <div class="coluna">
+        <div class="coluna-header">
+            <h2>🎵 Músicas</h2>
+            <a href="{% url 'musica_criar' %}" class="btn btn-green">+ Nova</a>
+        </div>
+        {% for musica in musicas %}
+        <div class="card">
+            <div class="card-info">
+                <strong>{{ musica.titulo }}</strong>
+                <span>{{ musica.artista.nome }}</span>
+                <span class="duracao">⏱ {{ musica.duracao_formatada }}</span>
+            </div>
+            <div class="card-acoes">
+                <a href="{% url 'musica_editar' musica.pk %}" class="btn btn-blue">Editar</a>
+                <a href="{% url 'musica_deletar' musica.pk %}" class="btn btn-red">Excluir</a>
+            </div>
+        </div>
+        {% empty %}
+        <p class="vazio">Nenhuma música cadastrada.</p>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

@@ -1,10 +1,12 @@
 from django.urls import path
-from .views import lista_artistas, criar_artista, editar_artista, deletar_artista
+from . import views
 
 urlpatterns = [
-    path('lista', lista_artistas, name='lista_artistas'),
-    path('criar/', criar_artista, name='criar_artista'),
-    path('editar/<int:pk>/', editar_artista, name='editar_artista'),
-    path('deletar/<int:pk>/', deletar_artista, name='deletar_artista'),
+    path('', views.home, name='home'),
+    path('artistas/novo/', views.artista_criar, name='artista_criar'),
+    path('artistas/<int:pk>/editar/', views.artista_editar, name='artista_editar'),
+    path('artistas/<int:pk>/deletar/', views.artista_deletar, name='artista_deletar'),
+    path('musicas/nova/', views.musica_criar, name='musica_criar'),
+    path('musicas/<int:pk>/editar/', views.musica_editar, name='musica_editar'),
+    path('musicas/<int:pk>/deletar/', views.musica_deletar, name='musica_deletar'),
 ]
-   
