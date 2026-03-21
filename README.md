@@ -2,15 +2,11 @@
 
 > Sistema de gerenciamento musical com integração à Last.fm API — desenvolvido para a Fábrica de Software 26.1.
 
-![Python](https://img.shields.io/badge/Python-3.13-blue)
-![Django](https://img.shields.io/badge/Django-6.0.3-green)
-![MySQL](https://img.shields.io/badge/MySQL-8.0-orange)
-![Last.fm](https://img.shields.io/badge/Last.fm-API-red)
-![Docker](https://img.shields.io/badge/Docker-✓-blue)
+🐍 Python 3.13   |   🌐 Django 6.0.3   |   🗄️ MySQL 8.0   |   🎵 Last.fm API   |   🐳 Docker
 
 ---
 
-## 👤 Autor
+## 👤 Criador
 
 | Campo | Info |
 |-------|------|
@@ -40,7 +36,7 @@ O **SoundTrackr** é uma aplicação web construída com Django que permite gere
 
 ---
 
-## ✨ Funcionalidades
+## ✨ Recursos
 
 ### 🎤 Artistas
 - **+ Novo Artista** — cadastra um artista manualmente com nome e gênero
@@ -84,7 +80,7 @@ Artista (1) ──────────── (N) MusicaFavorita
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📁 Organização dos Arquivos
 ```
 wsBackend-Fabrica26.1/
 ├── core/                   # configurações do projeto
@@ -113,9 +109,9 @@ wsBackend-Fabrica26.1/
 
 ---
 
-## 🚀 Como Instalar e Rodar
+## 🚀 Como Instalar e Executar
 
-### ▶️ Opção 1 — Rodar localmente
+### ▶️ Opção 1 — Executar localmente
 
 #### 1 — Clone o repositório
 ```bash
@@ -166,7 +162,7 @@ Acesse em `http://127.0.0.1:8000/` 🎉
 
 ---
 
-### 🐳 Opção 2 — Rodar com Docker
+### 🐳 Opção 2 — Executar com Docker
 
 #### 1 — Clone o repositório
 ```bash
@@ -222,10 +218,6 @@ Acesse em `http://127.0.0.1:8000/` 🎉
 | `style:` | Alterações visuais |
 
 ---
-
-## 🤖 Como a IA me Auxiliou nesse Projeto
-
-Durante o desenvolvimento do SoundTrackr, utilizei IA como ferramenta de apoio nas seguintes situações:
 
 ## 🧠 Uso de Inteligência Artificial no Desenvolvimento
 
