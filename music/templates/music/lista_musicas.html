@@ -1,0 +1,18 @@
+{% extends 'music/base.html' %}
+{% block content %}
+<h2>Músicas Favoritas</h2>
+<a href="{% url 'criar_musica' %}" class="btn btn-green">+ Nova</a>
+<table>
+  <tr><th>Título</th><th>Artista</th><th>Ações</th></tr>
+  {% for m in musicas %}
+  <tr>
+    <td>{{ m.titulo }}</td>
+    <td>{{ m.artista.nome }}</td>
+    <td>
+      <a href="{% url 'editar_musica' m.pk %}" class="btn btn-blue">Editar</a>
+      <a href="{% url 'deletar_musica' m.pk %}" class="btn btn-red">Excluir</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

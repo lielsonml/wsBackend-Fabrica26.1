@@ -1,7 +1,7 @@
 {% extends 'music/base.html' %}
 {% block content %}
     <h2>Confirmar exclusão</h2>
-    <p>Deseja excluir <strong>{{ artista.nome }}</strong>?</p>
+    <p>Deseja excluir <strong>{{ musica.titulo }}</strong>?</p>
     <form method="post">
     {% csrf_token %}
     <button type="submit" class="btn btn-red">Sim, excluir</button>
