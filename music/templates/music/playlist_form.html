@@ -4,14 +4,75 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'music/style-form.css' %}">
+<style>
+    .musicas-seletor {
+        background: #1a1a1a;
+        border: 1px solid #FFD93D;
+        padding: 1rem;
+        border-radius: 4px;
+        margin-top: 0.5rem;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    
+    .musica-checkbox {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem;
+        border-bottom: 1px solid #2a2a2a;
+        gap: 0.75rem;
+    }
+    
+    .musica-checkbox:last-child {
+        border-bottom: none;
+    }
+    
+    .musica-checkbox input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        accent-color: #FFD93D;
+    }
+    
+    .musica-checkbox label {
+        flex: 1;
+        margin: 0;
+        color: #f0f0f0;
+        cursor: pointer;
+        font-weight: normal;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
 <h2>{{ titulo }}</h2>
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Salvar</button>
-    <a href="{% url 'playlist_listar' %}">Cancelar</a>
+    
+    <div style="background: #2a2a2a; padding: 2rem; border-radius: 8px; border: 2px solid #FFD93D; max-width: 600px; margin: 2rem auto;">
+        <label style="color: #FFD93D; font-weight: 600; margin-bottom: 1rem; display: block;">Nome da Playlist</label>
+        {{ form.nome }}
+        
+        <label style="color: #FFD93D; font-weight: 600; margin-bottom: 0.5rem; display: block; margin-top: 1.5rem;">Selecione as músicas</label>
+        <div class="musicas-seletor">
+            {% if form.musicas.field.queryset.count > 0 %}
+                {% for value, label in form.musicas.field.choices %}
+                    <div class="musica-checkbox">
+                        <input type="checkbox" name="musicas" value="{{ value }}" id="id_musicas_{{ forloop.counter }}" {% if value in form.musicas.value %} checked {% endif %}>
+                        <label for="id_musicas_{{ forloop.counter }}">
+                            {{ label }}
+                        </label>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p style="color: #808080; margin: 1rem 0;">Nenhuma música disponível</p>
+            {% endif %}
+        </div>
+        
+        <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+            <button type="submit" style="background-color: #FFD93D; color: #0f0f0f; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">Salvar</button>
+            <a href="{% url 'playlist_listar' %}" style="background-color: #505050; color: #FFD93D; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; text-decoration: none; display: inline-block; text-align: center; font-weight: 600;">Cancelar</a>
+        </div>
+    </div>
 </form>
 {% endblock %}
