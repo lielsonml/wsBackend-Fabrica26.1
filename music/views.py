@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Artista, Musicafavorita
 from .forms import ArtistaForm, MusicafavoritaForm
+from .lastfm_services import buscar_artista, buscar_musicas
 
 def home(request):
     artistas = Artista.objects.all()
@@ -62,3 +63,49 @@ def musica_deletar(request, pk):
         musica.delete()
         return redirect('home')
     return render(request, 'music/deletar_musica.html', {'musica': musica})
+
+def lastfm_buscar(request):
+    if request.method == 'GET':
+        query = request.GET.get('q', '')
+        artistas = []
+        musicas = []
+        if query:
+            artistas = buscar_artista(query)
+            musicas = buscar_musicas(query)
+        return render(request, 'music/lastfm_buscar.html', {
+            'artistas': artistas,
+            'musicas': musicas,
+            'query': query,
+        })
+    else:
+        return redirect('home')
+
+def lastfm_salvar(request):
+    if request.method == 'POST':
+        tipo = request.POST.get('tipo')
+        if tipo == 'artista':
+            Artista.objects.get_or_create(
+                spotify_id=request.POST.get('lastfm_id'),
+                defaults={
+                    'nome': request.POST.get('nome'),
+                    'genero': request.POST.get('genero', ''),
+                }
+            )
+            return redirect('home')
+        elif tipo == 'musica':
+            artista, _ = Artista.objects.get_or_create(
+                spotify_id=request.POST.get('artista_lastfm_id'),
+                defaults={'nome': request.POST.get('artista_nome')}
+            )
+            Musicafavorita.objects.get_or_create(
+                spotify_id=request.POST.get('lastfm_id'),
+                defaults={
+                    'titulo': request.POST.get('nome'),
+                    'artista': artista,
+                    'duracao_ms': int(request.POST.get('duracao_ms') or 0),
+                    'url': request.POST.get('preview_url', ''),
+                }
+            )
+            return redirect('home')
+    else:
+        return redirect('lastfm_buscar')
