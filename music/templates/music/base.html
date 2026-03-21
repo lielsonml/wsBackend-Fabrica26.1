@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador Musicas</title>
+    <title>SoundTrackr</title>
     <link rel="stylesheet" href="{% static 'music/style-base.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
 <nav>
+    <span style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #FFD93D; font-weight: 700; margin-right: auto;">SoundTrackr</span>
     <a href="{% url 'home' %}">Início</a>
     <a href ="{% url 'playlist_listar' %}">Playlists</a>
-    <a href="{% url 'lastfm_buscar' %}">🔍 Buscar no Last.fm</a>
+    <a href="{% url 'lastfm_buscar' %}">Buscar no Last.fm</a>
 </nav>
 <div class="container">
     {% block content %}{% endblock %}

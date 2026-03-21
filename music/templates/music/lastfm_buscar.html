@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<h2>🔍 Buscar no Last.fm</h2>
+<h2>Buscar no Last.fm</h2>
 
 <div class="search-form">
     <form method="get">
@@ -18,7 +18,7 @@
 
 {% if artistas %}
 <div class="search-section">
-    <h3>🎤 Artistas encontrados</h3>
+    <h3>Artistas encontrados</h3>
     <div class="search-results">
         {% for artista in artistas %}
         <div class="result-card">
@@ -29,7 +29,7 @@
                 <input type="hidden" name="lastfm_id" value="{{ artista.mbid }}">
                 <input type="hidden" name="nome" value="{{ artista.name }}">
                 <input type="hidden" name="genero" value="">
-                <button type="submit">💾 Salvar</button>
+                <button type="submit">Salvar</button>
             </form>
         </div>
         {% endfor %}
@@ -39,7 +39,7 @@
 
 {% if musicas %}
 <div class="search-section">
-    <h3>🎵 Músicas encontradas</h3>
+    <h3>Músicas encontradas</h3>
     <div class="search-results">
         {% for musica in musicas %}
         <div class="result-card">
@@ -54,7 +54,7 @@
                 <input type="hidden" name="artista_nome" value="{{ musica.artist }}">
                 <input type="hidden" name="duracao_ms" value="{{ musica.duration }}">
                 <input type="hidden" name="preview_url" value="{{ musica.url }}">
-                <button type="submit">💾 Salvar</button>
+                <button type="submit">Salvar</button>
             </form>
         </div>
         {% endfor %}

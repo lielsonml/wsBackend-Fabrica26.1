@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
+
 /* Reset e Estilos Globais */
 * {
     margin: 0;
@@ -6,10 +8,20 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #1a1a1a;
     color: #f0f0f0;
     line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+label, button, .btn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
 }
 
 /* Navegação */
@@ -21,6 +33,9 @@ nav {
     top: 0;
     z-index: 100;
     border-bottom: 3px solid #FFD93D;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 
 nav a {

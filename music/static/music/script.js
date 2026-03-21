@@ -1,5 +1,5 @@
 // ============================================
-// 🎵 Script principal - Music API
+// Script principal - Music API
 // Animações, validações e efeitos visuais
 // ============================================
 
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.className = 'modal-overlay';
         overlay.innerHTML = `
             <div class="modal-content">
-                <div class="modal-icon">⚠️</div>
+                <div class=\"modal-icon\">!</div>
                 <h2>Tem certeza?</h2>
                 <p>Esta ação não pode ser desfeita</p>
                 <div class="modal-buttons">
@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCounter();
     });
 
-    console.log('🎵 Music API - JavaScript initialized!');
+    console.log('Music API - JavaScript initialized!');
 });
 
 // ============================================

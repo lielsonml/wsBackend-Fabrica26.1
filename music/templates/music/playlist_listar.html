@@ -9,7 +9,7 @@
 {% block content %}
 <div class="playlist-container">
     <div class="playlist-header">
-        <h2>🎵 Playlists</h2>
+        <h2>Playlists</h2>
         <a href="{% url 'playlist_criar' %}">+ Nova Playlist</a>
     </div>
     
@@ -18,7 +18,7 @@
         <div class="playlist-item">
             <div class="playlist-item-info">
                 <strong>{{ playlist.nome }}</strong>
-                <span>🎵 {{ playlist.musicas.count }} músicas</span>
+                <span>{{ playlist.musicas.count }} músicas</span>
             </div>
             <div class="playlist-item-actions">
                 <a href="{% url 'playlist_detalhe' playlist.pk %}">Ver</a>

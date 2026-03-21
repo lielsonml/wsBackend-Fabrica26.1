@@ -10,7 +10,7 @@
 <div class="home-grid">
     <div class="coluna">
         <div class="coluna-header">
-            <h2>🎤 Artistas</h2>
+            <h2>Artistas</h2>
             <a href="{% url 'artista_criar' %}" class="btn btn-green">+ Novo</a>
         </div>
         {% for artista in artistas %}
@@ -31,7 +31,7 @@
 
     <div class="coluna">
         <div class="coluna-header">
-            <h2>🎵 Músicas</h2>
+            <h2>Músicas</h2>
             <a href="{% url 'musica_criar' %}" class="btn btn-green">+ Nova</a>
         </div>
         {% for musica in musicas %}
@@ -39,7 +39,7 @@
             <div class="card-info">
                 <strong>{{ musica.titulo }}</strong>
                 <span>{{ musica.artista.nome }}</span>
-                <span class="duracao">⏱ {{ musica.duracao_formatada }}</span>
+                <span class=\"duracao\">{{ musica.duracao_formatada }}</span>
             </div>
             <div class="card-acoes">
                 <a href="{% url 'musica_editar' musica.pk %}" class="btn btn-blue">Editar</a>
@@ -52,14 +52,14 @@
     </div>
         <div class="coluna">
         <div class="coluna-header">
-            <h2>📋 Playlists</h2>
+            <h2>Playlists</h2>
             <a href="{% url 'playlist_criar' %}">+ Nova</a>
         </div>
         {% for playlist in playlists %}
         <div class="card">
             <div class="card-info">
                 <strong>{{ playlist.nome }}</strong>
-                <span>🎵 {{ playlist.musicas.count }} músicas</span>
+                <span>{{ playlist.musicas.count }} músicas</span>
             </div>
             <div class="card-acoes">
                 <a href="{% url 'playlist_detalhe' playlist.pk %}">Ver</a>
