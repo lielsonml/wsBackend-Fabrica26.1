@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Artistas</h2>
+<a href="{% url 'criar_artista' %}" class="btn btn-green">+ Novo</a>
+<table>
+  <tr><th>Nome</th><th>Gênero</th><th>Ações</th></tr>
+  {% for a in artistas %}
+  <tr>
+    <td>{{ a.nome }}</td>
+    <td>{{ a.genero }}</td>
+    <td>
+      <a href="{% url 'editar_artista' a.pk %}" class="btn btn-blue">Editar</a>
+      <a href="{% url 'deletar_artista' a.pk %}" class="btn btn-red">Excluir</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
